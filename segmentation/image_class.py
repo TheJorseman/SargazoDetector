@@ -7,14 +7,16 @@ from tqdm import tqdm
 from tools.image_tools import apply_mask
 
 class ImageClass(object):
-  def __init__(self, masks_folder, color, threshold=np.array([0.3, 0.48, 0.48])):
-    self.masked_images = self.get_masked_images(masks_folder, color)
+  def __init__(self, masks_folder, config):
+    self.config = config
+    self.threshold = config['threshold']
+    self.color = config['color']
+    self.masked_images = self.get_masked_images(masks_folder, self.color)
     self.masked_images_hsv = [cvtColor(np.float32(img_masked), COLOR_BGR2HSV) for img_masked in self.masked_images]
     self.mean = np.nanmean(self.masked_images_hsv, axis=(0,1,2))
     self.std = np.nanstd(self.masked_images_hsv, axis=(0,1,2))
     self.gaussian_prob = scipy.stats.norm(self.mean, self.std)
-    self.threshold = threshold
-    self.color = color
+
 
   def get_image_mask(self, folder, identifier='-mask'):
     output = {}

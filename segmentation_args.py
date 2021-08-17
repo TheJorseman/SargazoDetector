@@ -16,9 +16,8 @@ parser.add_argument("mask_path", help="Ouput Folder ",
 args = parser.parse_args()
 
 color_map = {
-            'sargazo': np.array([153,76,0]),
-            'oceano': np.array([0,102,204]),
+            'sargazo': {'color': np.array([153,76,0]), 'threshold': np.array([0.3, 0.48, 0.48])} ,
+            'oceano':  {'color': np.array([0,102,204]), 'threshold': np.array([0.45, 0.48, 0.48])},
             }
-
 segmentation = SegmentImages(args.root_folder, args.mask_folder, args.output_folder, args.mask_path, color_map)
 segmentation.segment_images()

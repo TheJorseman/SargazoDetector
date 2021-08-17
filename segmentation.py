@@ -2,8 +2,8 @@ import numpy as np
 from segmentation.image_segmentation import SegmentImages
 
 color_map = {
-            'sargazo': np.array([153,76,0]),
-            'oceano': np.array([0,102,204]),
+            'sargazo': {'color': np.array([153,76,0]), 'threshold': np.array([0.3, 0.48, 0.48])} ,
+            'oceano':  {'color': np.array([0,102,204]), 'threshold': np.array([0.49, 0.49, 0.49])},
             }
 
 root_folder = "full_data_1"

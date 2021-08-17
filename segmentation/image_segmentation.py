@@ -7,19 +7,19 @@ from tqdm import tqdm
 
 class SegmentImages(object):
   
-  def __init__(self, root_folder, mask_folder, output_folder, mask, color_map):
+  def __init__(self, root_folder, mask_folder, output_folder, mask, class_config):
     self.root_folder = root_folder
     self.mask_folder = mask_folder
     self.output_folder = output_folder
     self.mask = imread(mask,0)
-    self.color_map = color_map
+    self.config = class_config
     self._class = {} 
     self.__preconfig__()
     
   def __preconfig__(self):
-    for key, color in self.color_map.items():
+    for key, config in self.config.items():
       print(key)
-      self._class[key] = ImageClass(self.mask_folder, color)
+      self._class[key] = ImageClass(self.mask_folder, config)
     if not path.exists(self.output_folder):
       mkdir(self.output_folder)
   
