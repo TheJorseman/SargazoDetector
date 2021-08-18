@@ -8,6 +8,8 @@ full_data_2
 Masked
 full_data_1_gnb
 full_data_2_gnb
+dataset
+dataset_segmentation
 ### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/
