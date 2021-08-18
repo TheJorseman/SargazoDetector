@@ -66,7 +66,7 @@ def train_model(model, criterion, dataloaders, optimizer, metrics, bpath, num_ep
                     if phase == 'Train':
                         loss.backward()
                         optimizer.step()
-            import pdb;pdb.set_trace()
+            #import pdb;pdb.set_trace()
             batchsummary['epoch'] = epoch
             epoch_loss = loss
             batchsummary[f'{phase}_loss'] = epoch_loss.item()
