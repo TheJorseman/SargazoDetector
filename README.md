@@ -33,8 +33,7 @@ python segmentation.py
 Usando el programa con argumentos.
 
 ```bash
-python segmentation.py --mask_folder='Masked' --root_folder='full_data_1' --output_folder='full_data_1' --mask_path='mask.png'
-
+python segmentation_args.py --mask_folder=Masked --root_folder=full_data_1 --output_folder=full_data_1_gnb --mask_path=mask.png --use_gnb=True
 ```
 
 ## Contribuir

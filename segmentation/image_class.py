@@ -16,8 +16,7 @@ class ImageClass(object):
     self.mean = np.nanmean(self.masked_images_hsv, axis=(0,1,2))
     self.std = np.nanstd(self.masked_images_hsv, axis=(0,1,2))
     self.gaussian_prob = scipy.stats.norm(self.mean, self.std)
-
-
+    
   def get_image_mask(self, folder, identifier='-mask'):
     output = {}
     for file in listdir(folder):
