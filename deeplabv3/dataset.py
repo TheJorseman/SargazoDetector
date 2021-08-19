@@ -29,7 +29,7 @@ class SegmentationDataset(VisionDataset):
                  fraction: float = None,
                  subset: str = None,
                  image_color_mode: str = "rgb",
-                 mask_color_mode: str = "rgb") -> None:
+                 mask_color_mode: str = "grayscale") -> None:
         """
         Args:
             root (str): Root directory path.
@@ -170,8 +170,8 @@ def get_dataloader_sep_folder(data_dir: str,
 
 def get_dataloader_single_folder(data_dir: str,
                                  image_folder: str = 'Images',
-                                 mask_folder: str = 'Masks',
-                                 fraction: float = 0.3,
+                                 mask_folder: str = 'GrayMasks',
+                                 fraction: float = 0.2,
                                  batch_size: int = 8):
     """
     Create train and test dataloader from a single directory containing
@@ -188,7 +188,7 @@ def get_dataloader_single_folder(data_dir: str,
     """
     data_transforms = transforms.Compose([
                                         transforms.Resize((512,384)),
-                                        transforms.ColorJitter(brightness=0.1, contrast=2.3),
+                                        #transforms.ColorJitter(brightness=0.1, contrast=2.3),
                                         transforms.RandomPerspective(),
                                         transforms.RandomRotation(30),
                                         transforms.RandomVerticalFlip(),

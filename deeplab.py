@@ -1,18 +1,23 @@
 from pathlib import Path
+import os
 from torch.utils.data import DataLoader
 from torchvision import transforms
 from sklearn.metrics import f1_score, roc_auc_score
 from torch.nn import MSELoss
 from torch.optim import Adam
 import torch
-
+import pickle
 from deeplabv3.dataset import get_dataloader_single_folder
 from deeplabv3.model import get_model
 from deeplabv3.train import train_model
 
 
 def main():
-    model = get_model()
+    
+    if any(["checkpoint" in val for val in os.listdir(".")]):
+        model = torch.load("checkpoint-40.pt")
+    else:
+        model = get_model()
     criterion = MSELoss(reduction='mean')
     optimizer = Adam(model.parameters(), lr=1e-4)
 
@@ -24,7 +29,7 @@ def main():
     if not exp_directory.exists():
         exp_directory.mkdir()
     BATCH_SIZE = 2
-    EPOCHS = 100
+    EPOCHS = 110
     # Create the dataloader
     dataloaders = get_dataloader_single_folder(data_directory, batch_size=BATCH_SIZE)
     model = train_model(model,

@@ -18,7 +18,7 @@ parser.add_argument("--use_gnb", help="Ouput Folder ",
 args = parser.parse_args()
 
 color_map = {
-            'sargazo': {'color': np.array([153,76,0]), 'threshold': np.array([0.3, 0.48, 0.48]), 'label': 0} ,
+            'sargazo': {'color': np.array([153,76,0]),  'threshold': np.array([0.3, 0.48, 0.48]),  'label': 0} ,
             'oceano':  {'color': np.array([0,102,204]), 'threshold': np.array([0.49, 0.49, 0.49]), 'label': 1},
             }
 

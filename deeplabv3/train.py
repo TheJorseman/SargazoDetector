@@ -71,6 +71,8 @@ def train_model(model, criterion, dataloaders, optimizer, metrics, bpath, num_ep
             epoch_loss = loss
             batchsummary[f'{phase}_loss'] = epoch_loss.item()
             print('{} Loss: {:.4f}'.format(phase, loss))
+        if epoch % 5 == 0:
+            torch.save(model, 'checkpoint-{}.pt'.format(epoch))
         for field in fieldnames[3:]:
             batchsummary[field] = np.mean(batchsummary[field])
         print(batchsummary)
