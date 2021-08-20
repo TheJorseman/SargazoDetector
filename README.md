@@ -1,7 +1,8 @@
 # Sargassum Segmentation and Optical Flow 
 
-Detector de sargazo dada una imagen.
+Se hace una segmentación semantica de una imagen para detectar sargazo y se calcula la densidad de flujo óptico para obtener información sobre su movimiento.
 
+Código también disponible en [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/18UmSCG0Mp6Ab6-sJGEhep8lZQLOSHGOu?usp=sharing)
 
 ## Instalación
 Use el gestor de paquetes [pip](https://pip.pypa.io/en/stable/) para instalar los requerimientos.
