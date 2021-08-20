@@ -10,6 +10,7 @@ from tqdm import tqdm
 
 def train_model(model, criterion, dataloaders, optimizer, metrics, bpath, num_epochs):
     since = time.time()
+    softmax = torch.nn.Softmax2d()
     best_model_wts = copy.deepcopy(model.state_dict())
     best_loss = 1e10
     # Use gpu if available
@@ -50,6 +51,8 @@ def train_model(model, criterion, dataloaders, optimizer, metrics, bpath, num_ep
                     except:
                         print("Solo hay 1 batch")
                         continue
+                    #outputs['out'] = softmax(outputs['out'])
+                    #import pdb;pdb.set_trace()
                     loss = criterion(outputs['out'], masks)
                     y_pred = outputs['out'].data.cpu().numpy().ravel()
                     y_true = masks.data.cpu().numpy().ravel()

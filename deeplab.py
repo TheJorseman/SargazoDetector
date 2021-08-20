@@ -3,7 +3,7 @@ import os
 from torch.utils.data import DataLoader
 from torchvision import transforms
 from sklearn.metrics import f1_score, roc_auc_score
-from torch.nn import MSELoss
+from torch.nn import MSELoss, CrossEntropyLoss
 from torch.optim import Adam
 import torch
 import pickle
@@ -19,7 +19,7 @@ def main():
     else:
         model = get_model()
     criterion = MSELoss(reduction='mean')
-    optimizer = Adam(model.parameters(), lr=1e-4)
+    optimizer = Adam(model.parameters(), lr=1e-3)
 
     metrics = {'f1_score': f1_score, 'auroc': roc_auc_score}
     data_directory="dataset"
@@ -29,7 +29,7 @@ def main():
     if not exp_directory.exists():
         exp_directory.mkdir()
     BATCH_SIZE = 2
-    EPOCHS = 110
+    EPOCHS = 150
     # Create the dataloader
     dataloaders = get_dataloader_single_folder(data_directory, batch_size=BATCH_SIZE)
     model = train_model(model,

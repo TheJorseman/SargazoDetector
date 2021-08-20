@@ -170,7 +170,7 @@ def get_dataloader_sep_folder(data_dir: str,
 
 def get_dataloader_single_folder(data_dir: str,
                                  image_folder: str = 'Images',
-                                 mask_folder: str = 'GrayMasks',
+                                 mask_folder: str = 'BinaryMasks',
                                  fraction: float = 0.2,
                                  batch_size: int = 8):
     """
